@@ -1,0 +1,6 @@
+# build artifacts
+build/
+
+# cortex-debug extension variables
+.vscode/.cortex-debug.peripherals.state.json
+.vscode/.cortex-debug.registers.state.json

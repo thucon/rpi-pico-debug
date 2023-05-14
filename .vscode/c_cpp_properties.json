@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/build/generated/pico_base",
+                "${env:HOME}/pico/pico-sdk/src/common/pico_stdlib/include",
+                "${env:HOME}/pico/pico-sdk/src/common/pico_base/include",
+                "${env:HOME}/pico/pico-sdk/src/common/pico_binary_info/include",
+                "${env:HOME}/pico/pico-sdk/src/common/pico_time/include",
+                "${env:HOME}/pico/pico-sdk/src/host/pico_platform/include",
+                "${env:HOME}/pico/pico-sdk/src/host/pico_stdio/include",
+                "${env:HOME}/pico/pico-sdk/src/host/hardware_gpio/include",
+                "${env:HOME}/pico/pico-sdk/src/host/hardware_uart/include",
+                "${env:HOME}/pico/pico-sdk/src/host/hardware_timer/include"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "clang-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}

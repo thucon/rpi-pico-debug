@@ -1,0 +1,55 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "gpio.h": "c",
+        "pico.h": "c",
+        "config.h": "c",
+        "time.h": "c",
+        "cstdio": "c"
+    },
+
+    "cortex-debug.openocdPath": "${env:HOME}/pico/openocd/src/openocd",
+
+    // set environment for mac, linux and windows
+    "terminal.integrated.env.osx": {
+        "PICO_SDK_PATH": "${env:HOME}/pico/pico-sdk"
+    },
+    "terminal.integrated.env.linux": {
+        "PICO_SDK_PATH": "${env:HOME}/pico/pico-sdk"
+    },
+    "terminal.integrated.env.windows": {
+        "PICO_SDK_PATH": "${env:USERPROFILE}\\pico\\pico-sdk"
+    },
+
+    // cmake setup:
+    // these settings tweaks to the cmake plugin will ensure
+    // that you debug using cortex-debug instead of trying to launch
+    // a Pico binary on the host
+    "cmake.statusbar.advanced": {
+        "debug": {
+            "visibility": "hidden"
+        },
+        "launch": {
+            "visibility": "hidden"
+        },
+        "build": {
+            "visibility": "hidden"
+        },
+        "buildTarget": {
+            "visibility": "hidden"
+        }
+    },
+    "cmake.buildBeforeRun": true,
+    "cmake.buildEnvironment": { "PICO_SDK_PATH": "${env:HOME}/pico/pico-sdk"},
+    "cmake.configureEnvironment": { "PICO_SDK_PATH": "${env:HOME}/pico/pico-sdk"},
+    "cmake.testEnvironment": { "PICO_SDK_PATH": "${env:HOME}/pico/pico-sdk"},
+    "cmake.environment": { "PICO_SDK_PATH": "${env:HOME}/pico/pico-sdk"},
+
+    // C_Cpp setup
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+
+    // project settings
+    "prj": {
+        "app"   : "app"
+    }
+}

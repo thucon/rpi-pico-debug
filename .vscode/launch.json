@@ -1,0 +1,51 @@
+{
+    "configurations": [
+        {
+            "name": "openocd",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/build/${config:prj.app}.elf",
+            "device": "RP2040",
+            "gdbPath": "arm-none-eabi-gdb",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "openOCDLaunchCommands": ["adapter speed 5000"],
+            "preLaunchTask": "openocd (debug)",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${env:HOME}/pico/pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
+            "searchDir": ["${env:HOME}/work/openocd/tcl"],
+            "runToEntryPoint": "main",
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "name": "openocd (cmake)",
+            "cwd": "${workspaceRoot}",
+            "executable": "${command:cmake.launchTargetPath}",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "openOCDLaunchCommands": ["adapter speed 5000"],
+            "gdbPath" : "arm-none-eabi-gdb",
+            // "gdbPath" : "gdb-multiarch",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${env:PICO_SDK_PATH}/src/rp2040/hardware_regs/rp2040.svd",
+            "searchDir": ["${env:HOME}/work/openocd/tcl"],
+            "runToEntryPoint": "main",
+            // Work around for stopping at main on restart
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ]
+        }
+    ]
+}

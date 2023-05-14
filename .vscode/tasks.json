@@ -1,0 +1,48 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "type": "shell",
+    "options": {
+        "cwd": "${workspaceFolder}"
+    },
+    "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+    },
+    "tasks": [
+        {
+            "label": "build",
+            "command": "mkdir -p build && cd build && cmake .. && make",
+            "problemMatcher": []
+        },
+        {
+            "label": "build (debug)",
+            "command": "mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug .. && make",
+            "problemMatcher": []
+        },
+        {
+            "label": "flash",
+            "command" : "${env:HOME}/pico/openocd/src/openocd -f interface/cmsis-dap.cfg -c 'transport select swd' -s ${env:HOME}/pico/openocd/tcl -f target/rp2040.cfg -c 'adapter speed 5000' -c 'targets rp2040.core0' -c 'program build/${config:prj.app}.elf verify reset exit'",
+            "dependsOn": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "openocd",
+            "dependsOn": ["build", "flash"],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        },
+        {
+            "label": "openocd (debug)",
+            "dependsOn": ["build (debug)", "flash"],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        },
+        {
+            "label": "clean",
+            "command": "rm -rf build",
+            "problemMatcher": []
+        }
+    ]
+}
