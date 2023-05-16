@@ -15,6 +15,8 @@ Below is the end result of this guide shown. Full debug capabilities through
 
 ![](docs/vscode_debug.png)
 
+![](docs/rpi-pico-probe-mini.gif)
+
 ## Getting started
 
 ### Install pico sdk
